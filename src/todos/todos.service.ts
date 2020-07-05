@@ -11,7 +11,8 @@ export class TodosService {
   }
 
   async create(createTodoDto: CreateTodoDto): Promise<Todo> {
-    return await new this.todoModel(createTodoDto).save();
+    const createdTodo = new this.todoModel(createTodoDto);
+    return await createdTodo.save();
   }
 
   async findAll(): Promise<Todo[]> {
@@ -22,8 +23,9 @@ export class TodosService {
     return await this.todoModel.findById(id).exec();
   }
 
-  // async findByTitle(title: string): Promise<Todo[]> {
-  // }
+  async findByTitle(title: string): Promise<Todo[]> {
+    return await this.todoModel.find({ title: new RegExp(title, 'i')});
+  }
 
   async delete(id: string): Promise<any> {
     return await this.todoModel.findByIdAndDelete(id);

@@ -14,7 +14,7 @@ export class TodosController {
     if (!title) {
       return this.todoService.findAll();
     }
-    // return this.todoService.findByTitle(title);
+    return this.todoService.findByTitle(title);
   }
 
   @Get('todo/:id')
