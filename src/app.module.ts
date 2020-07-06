@@ -1,7 +1,7 @@
-import {Module} from '@nestjs/common';
-import {TodosModule} from './todos/todos.module';
-import {MongooseModule} from '@nestjs/mongoose';
-import {configModule} from './configuration.root';
+import { Module } from '@nestjs/common';
+import { TodosModule } from './todos/todos.module';
+import { MongooseModule } from '@nestjs/mongoose';
+import { configModule } from './configuration.root';
 
 @Module({
   imports: [
@@ -9,10 +9,9 @@ import {configModule} from './configuration.root';
     configModule,
     MongooseModule.forRoot(process.env.MONGO_CONNECTION_STRING, {
       useFindAndModify: true,
-      useUnifiedTopology: true
-    })
+      useUnifiedTopology: true,
+    }),
   ],
-  controllers: [],
   providers: [],
 })
 export class AppModule {}

@@ -1,4 +1,4 @@
-import {ConfigModule} from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 
 const environment = process.env.NODE_ENV || 'development';
 

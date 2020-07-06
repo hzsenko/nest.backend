@@ -1,8 +1,12 @@
-import {ApiProperty} from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 
 export class UpdateTodoDto {
-  @ApiProperty()
-  title: string;
-  @ApiProperty()
-  done: boolean;
+  @ApiProperty({
+    required: true
+  })
+  readonly title: string;
+  @ApiProperty({
+    required: false
+  })
+  readonly done: boolean;
 }

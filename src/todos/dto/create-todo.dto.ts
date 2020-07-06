@@ -1,8 +1,12 @@
-import {ApiProperty} from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateTodoDto {
-  @ApiProperty()
+  @ApiProperty({
+    required: true
+  })
   readonly title: string;
-  @ApiProperty()
+  @ApiProperty({
+    required: true
+  })
   readonly done: boolean;
 }

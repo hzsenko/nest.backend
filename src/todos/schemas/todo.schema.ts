@@ -1,16 +1,16 @@
-import {Document} from "mongoose";
-import {Schema, Prop, SchemaFactory} from "@nestjs/mongoose";
+import { Document } from 'mongoose';
+import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema()
 export class Todo extends Document {
   @Prop({
-    required: true
+    required: true,
   })
   readonly title: string;
 
   @Prop({
     default: false,
-    required: false
+    required: false,
   })
   readonly done: boolean;
 }

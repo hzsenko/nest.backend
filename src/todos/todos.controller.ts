@@ -3,6 +3,7 @@ import {TodosService} from './todos.service';
 import {CreateTodoDto} from './dto/create-todo.dto';
 import {Todo} from './schemas/todo.schema';
 import {UpdateTodoDto} from './dto/update-todo.dto';
+import {ApiQuery} from '@nestjs/swagger';
 
 @Controller()
 export class TodosController {
@@ -10,6 +11,10 @@ export class TodosController {
   constructor(private todoService: TodosService) {}
 
   @Get('todos')
+  @ApiQuery({
+    name: 'title',
+    required: false
+  })
   getAll(@Query('title') title: string): any {
     if (!title) {
       return this.todoService.findAll();
@@ -28,12 +33,12 @@ export class TodosController {
   }
 
   @Put('todo/:id')
-  update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
+  update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto): Promise<Todo> {
     return this.todoService.update(id, updateTodoDto);
   }
 
   @Delete('todo/:id')
-  delete(@Param('id') id: string) {
+  delete(@Param('id') id: string): Promise<Todo> {
     return this.todoService.delete(id);
   }
 
